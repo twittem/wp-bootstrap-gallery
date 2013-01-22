@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="wp-bootstrap-gallery : A custom Wordpress gallery for dynamic thumbnail layout using Twitter Bootstrap 2.2.2 thumbnail layouts." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>wp-bootstrap-gallery</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/twittem/wp-bootstrap-gallery">View on GitHub</a>
+
+          <h1 id="project_title">wp-bootstrap-gallery</h1>
+          <h2 id="project_tagline">A custom Wordpress gallery for dynamic thumbnail layout using Twitter Bootstrap 2.2.2 thumbnail layouts.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/twittem/wp-bootstrap-gallery/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/twittem/wp-bootstrap-gallery/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>Demo</h2>
+
+<p>This is an example of a dynamic gallery layout for 6 images. 
+<img src="https://f.cloud.github.com/assets/1471150/65834/58d2fbee-5e8e-11e2-8cc1-3dae1624baf3.jpg" alt="Example 6 Image Dynamic Layout"></p>
+
+<h2>NOTE</h2>
+
+<p>This is a utility class is intended to format your Wordpress gallery shortcode to use Twitter Bootstrap 2.2.2 thumbnail layouts, and does not include the dependant Twitter Bootstrap files You will have to install include them manually. </p>
+
+<h2>Sample Image</h2>
+
+<p>There is no online demo at this time. A sample screenshot can be found here <a href="http://twitpic.com/bo1g7i">http://twitpic.com/bo1g7i</a></p>
+
+<h2>Installation</h2>
+
+<p>Place <strong>wp_bootstrap_gallery.php</strong> in your Wordpress theme folder <code>/wp-content/your-theme/</code></p>
+
+<p>Open your Wordpress themes <strong>functions.php</strong> file  <code>/wp-content/your-theme/functions.php</code> and add the following code:</p>
+
+<div class="highlight"><pre><span class="c1">// Register Custom Gallery</span>
+<span class="k">require_once</span><span class="p">(</span><span class="s1">'wp_bootstrap_gallery.php'</span><span class="p">);</span>
+</pre></div>
+
+<h2>Useage</h2>
+
+<p>Simply create a Wordpress post gallery as you usually would and the script will do the rest.</p>
+
+<h2>Supported Layouts</h2>
+
+<ul>
+<li>1 Image - One full width image </li>
+<li>2 Images - Two half width images </li>
+<li>3 Images - One 3/4 width image with two 1/4 width images to the right</li>
+<li>4 Images - One full width image with three 1/3 width images underneath</li>
+<li>5 Images - Two half width images with four 1/4 width images underneath</li>
+<li>6 Images - One 2/3 width image with two 1/3 width images to the right, and three 1/3 width images underneath </li>
+<li>7 or more images -  One full width image with two 1/2 width images underneath. All remaining images 1/3 width underneath</li>
+</ul><h2>Creating custom layouts</h2>
+
+<p>All layouts are created using Bootstrap span declarations for 12 collums and css floats. The script counts the number of images and adds assigns an array of images spans for that number of images.</p>
+
+<p>For example: If we want to do a layout 6 images where we have One 2/3 (8 Cols) width image on the left side with two 1/3 (4 Cols) width images on the right, and underneath two 1/3 (4 Cols) width images on the left side and one 2/3 (8 Cols) width image on the right.</p>
+
+<p><strong>Find:</strong></p>
+
+<div class="highlight"><pre>    <span class="k">case</span> <span class="mi">6</span><span class="o">:</span>
+        <span class="nv">$span_array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+</pre></div>
+
+<p><strong>Replace With:</strong></p>
+
+<div class="highlight"><pre>    <span class="k">case</span> <span class="mi">6</span><span class="o">:</span>
+        <span class="nv">$span_array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+</pre></div>
+
+<h2>Changelog</h2>
+
+<p><strong>0.1:</strong></p>
+
+<ul>
+<li>Initial Commit</li>
+</ul><h2>Known Issues</h2>
+
+<ul>
+<li>Thumbnails are not spaced properly when using the responsive framework. I am working on a fix for this but am currently stuck. I want the class to utilize the default Bootstrap CSS with no modifications.<br>
+</li>
+</ul><h2>Todo</h2>
+
+<ul>
+<li>Fix thumbnail padding</li>
+<li>Include custom thumbnail sizes</li>
+<li>Select thumbnail size bases in span for optimized loading</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">wp-bootstrap-gallery maintained by <a href="https://github.com/twittem">twittem</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
