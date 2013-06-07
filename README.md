@@ -1,21 +1,22 @@
 wp-bootstrap-gallery
 ======================
 
-A custom Wordpress gallery for dynamic thumbnail layout using Twitter Bootstrap 2.2.2 (https://github.com/twitter/bootstrap/) thumbnails and the WordPress built in gallery manager.
+A custom WordPress gallery for dynamic thumbnail layout using Twitter Bootstrap 2 (https://github.com/twitter/bootstrap/) and the WordPress built in gallery manager. Once the script is setup it will alter the WordPress gallery shortcode to create a unique 
+thumbnail layout based on the number of gallery items.
 
 NOTE
 ----
-This is a utility class is intended to format your Wordpress gallery shortcode to use Twitter Bootstrap 2.2.2 thumbnail layouts, and does not include the dependant Twitter Bootstrap files You will have to install include them manually. 
+This is a utility class is intended to format your WordPress gallery shortcode to use Twitter Bootstrap 2.2.2 thumbnail layouts, and does not include the dependant Twitter Bootstrap files You will have to install include them manually. 
 
 Sample Image
 ------------
-There is no online demo at this time. A sample screenshot can be found here http://twitpic.com/bo1g7i
+![Gallery Sample](http://d3j5vwomefv46c.cloudfront.net/photos/large/705506382.jpg?1356134094)
 
 Installation
 ------------
 Place **wp_bootstrap_gallery.php** in your Wordpress theme folder `/wp-content/your-theme/`
 
-Open your Wordpress themes **functions.php** file  `/wp-content/your-theme/functions.php` and add the following code:
+Open your WordPress themes **functions.php** file  `/wp-content/your-theme/functions.php` and add the following code:
 
 ```php
 // Register Custom Gallery
@@ -24,8 +25,7 @@ require_once('wp_bootstrap_gallery.php');
 
 Useage
 ------------
-Simply create a Wordpress post gallery as you usually would and the script will do the rest.
-
+Simply create a WordPress post gallery as you usually would and the script will do the rest.
 
 Supported Layouts
 ------------
@@ -41,9 +41,9 @@ Supported Layouts
 Creating custom layouts
 ------------
 
-All layouts are created using Bootstrap span declarations for 12 collums and css floats. The script counts the number of images and adds assigns an array of images spans for that number of images.
+All layouts are created using Bootstrap span declarations for 12 columns and CSS floats. The script counts the number of images and assigns an array of spans for that number of images.
 
-For example: If we want to do a layout 6 images where we have One 2/3 (8 Cols) width image on the left side with two 1/3 (4 Cols) width images on the right, and underneath two 1/3 (4 Cols) width images on the left side and one 2/3 (8 Cols) width image on the right.
+For example: If we want to layout 6 images where we have One 2/3 (8 Cols) width image on the left side with two 1/3 (4 Cols) width images on the right, and underneath two 1/3 (4 Cols) width images on the left side and one 2/3 (8 Cols) width image on the right. 
 
 **Find:**
 ```php
@@ -59,20 +59,12 @@ For example: If we want to do a layout 6 images where we have One 2/3 (8 Cols) w
 		break;
 ```
 
-
 Changelog
 ------------
+**1.0:**
++ Updated to div layout to fix float issues.
++ Licence now GPL-2.0+ to match WordPress.
++ Added a copy of the GPL-2.0+ Licence.
+
 **0.1:**
 + Initial Commit
-
-
-Known Issues
-------------
-+ Thumbnails are not spaced properly when using the responsive framework. I am working on a fix for this but am currently stuck. I want the class to utilize the default Bootstrap CSS with no modifications.  
-
-
-Todo
-------------
-+ Fix thumbnail padding
-+ Include custom thumbnail sizes
-+ Select thumbnail size bases in span for optimized loading

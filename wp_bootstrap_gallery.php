@@ -3,10 +3,11 @@
 /**
  * Class Name: wp_bootstrap_gallery
  * GitHub URI: https://github.com/twittem/wp-bootstrap-gallery
- * Description: A custom Wordpress gallery for dynamic thumbnail layout using Twitter Bootstrap 2.2.2 (https://github.com/twitter/bootstrap/) thumbnail layouts.
- * Version: 0.1
+ * Description: A custom Wordpress gallery for dynamic thumbnail layout using Twitter Bootstrap 2 thumbnail layouts.
+ * Version: 1.0
  * Author: Edward McIntyre - @twittem
- * Licence: WTFPL 2.0 (http://sam.zoy.org/wtfpl/COPYING)
+ * License: GPL-2.0+
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
 function wp_bootstrap_gallery( $content, $attr ) {
@@ -102,7 +103,7 @@ function wp_bootstrap_gallery( $content, $attr ) {
 	
 	$selector	=	"gallery-{$instance}";
 	$size_class	=	sanitize_html_class( $size );
-	$output		=	"<ul id='$selector' class='thumbnails'>";
+	$output		=	"<div class='row' id='$selector'>";
 
 	/**
  	 * Count number of items in $attachments array, and assign a colum layout to $span_array
@@ -150,9 +151,9 @@ function wp_bootstrap_gallery( $content, $attr ) {
 		$attachment_image = wp_get_attachment_image( $id, 'full');
 		$attachment_link = wp_get_attachment_link( $id, 'full', ! ( isset( $attr['link'] ) AND 'file' == $attr['link'] ) );
 		
-		$output .= "<li class='span" . $span_array[$attachment_count] . "'>";
+		$output .= "<div class='span" . $span_array[$attachment_count] . "'>";
 		$output .= $attachment_link . "\n";
-		$output .= "</li>\n";
+		$output .= "</div>\n";
 
 		if(count($attachments) >= 7 && $attachment_count == 3){
 			$attachment_count = 3;
@@ -161,26 +162,11 @@ function wp_bootstrap_gallery( $content, $attr ) {
 		}
 	}
 	
-	$output .= "</ul>\n";
+	$output .= "</div>\n";
 	
 	return $output;
 }
 
 add_filter( 'post_gallery', 'wp_bootstrap_gallery', 10, 2 );
-
-
-function wp_bootstrap_gallery_add_attachment_class($html){
-    $postid = get_the_ID();
-
-    // Strip all CSS Classes
-    $html = preg_replace('/class=".*?"/', '', $html);
-
-    // Add thumbnail class to link
-    $html = str_replace('<a','<a class="thumbnail"',$html);
-    
-    return $html;
-}
-
-add_filter('wp_get_attachment_link','wp_bootstrap_gallery_add_attachment_class',10,1);
 
 ?>
