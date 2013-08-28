@@ -68,3 +68,6 @@ Changelog
 
 **0.1:**
 + Initial Commit
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/twittem/wp-bootstrap-gallery/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
